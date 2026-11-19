@@ -1,0 +1,56 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  backend-check:
+    name: Backend Lint & Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install backend dependencies
+        run: |
+          cd backend
+          npm install
+
+      - name: Verify backend syntax
+        run: |
+          cd backend
+          node --check server.js
+
+  admin-build:
+    name: Admin Dashboard Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: admin/package-lock.json
+
+      - name: Install admin dependencies
+        run: |
+          cd admin
+          npm install
+
+      - name: Build admin dashboard
+        run: |
+          cd admin
+          npm run build
