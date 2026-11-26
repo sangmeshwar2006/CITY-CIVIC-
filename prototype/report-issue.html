@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Civic Issue</title>
+  <link rel="stylesheet" href="report-issue.css">
+</head>
+<body>
+
+ 
+  <!--<nav class="navbar">
+    <h1 class="logo">CityCivic 🇮🇳</h1>
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="report-issue.html">Report Issue</a></li>
+      <li><a href="viewproblem.html">View Issues</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>-->
+
+   <header class="navbar">
+  <div class="logo">CityCivic 🇮🇳</div>
+
+  <nav class="nav-links">
+    <a href="home.html">Home</a>
+    <a href="report-issue.html">Report Issue</a>
+    <a href="viewproblem.html">View Issues</a>
+    <a href="about.html">About</a>
+  </nav>
+
+
+  <div class="hamburger" id="hamburger">
+    ☰
+  </div>
+</header>
+
+
+  <section class="page-header">
+    <h2>Report a Civic Issue</h2>
+    <p>Help improve your city by reporting civic problems</p>
+  </section>
+
+ <section class="report-section">
+  <form class="report-form">
+
+ 
+    <div class="form-group">
+      <label>State</label>
+      <select id="stateSelect" required>
+        <option value="">Select State</option>
+        <option value="Karnataka">Karnataka</option>
+        <option value="Maharashtra">Maharashtra</option>
+        <option value="Uttar Pradesh">Uttar Pradesh</option>
+        <option value="Telangana">Telangana</option>
+        <option value="Delhi">Delhi</option>
+      </select>
+    </div>
+
+  
+    <div class="form-group">
+      <label>City</label>
+      <select id="citySelect" required disabled>
+        <option value="">Select City</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Area / Ward</label>
+      <input type="text" placeholder="Enter area or ward name" required>
+    </div>
+
+    <div class="form-group">
+  <label>Location</label>
+  <input type="text" id="locationField" placeholder="Auto-generated location" readonly>
+</div>
+
+
+    <div class="form-group">
+      <label>Issue Category</label>
+      <select required>
+        <option value="">Select Issue Type</option>
+        <option>Road & Potholes</option>
+        <option>Garbage & Waste</option>
+        <option>Water Supply</option>
+        <option>Street Light</option>
+        <option>Drainage & Sanitation</option>
+        <option>Traffic Issue</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Landmark (Optional)</label>
+      <input type="text" placeholder="Near bus stop, school, etc.">
+    </div>
+
+    <div class="form-group full">
+      <label>Issue Description</label>
+      <textarea rows="4" placeholder="Describe the problem clearly..." required></textarea>
+    </div>
+
+    <div class="form-group full">
+      <label>Upload Photo (Optional)</label>
+      <input type="file">
+    </div>
+
+    <button type="submit" class="submit-btn">Submit Issue</button>
+
+  </form>
+</section>
+
+</section>
+
+    
+
+</select>
+
+
+
+    </form>
+  </section>
+
+
+  <footer>
+    <p>© 2025 City Civic Portal | Digital India 🇮🇳</p>
+  </footer>
+
+</body>
+</html>
+<script>
+    const reportForm = document.querySelector(".report-form");
+
+if (reportForm) {
+  reportForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const city = reportForm.querySelector("select").value;
+    const area = reportForm.querySelector("input[type='text']").value;
+    const category = reportForm.querySelectorAll("select")[1].value;
+    const description = reportForm.querySelector("textarea").value;
+
+    if (!city || !area || !category || !description) {
+      alert("Please fill all required fields");
+      return;
+    }
+
+    const issue = {
+      id: Date.now(),
+      city,
+      area,
+      category,
+      description,
+      status: "Pending",
+      date: new Date().toLocaleDateString()
+    };
+
+    let issues = JSON.parse(localStorage.getItem("issues")) || [];
+    issues.push(issue);
+    localStorage.setItem("issues", JSON.stringify(issues));
+
+    alert("✅ Issue reported successfully!");
+    reportForm.reset();
+  });
+}
+
+
+const citiesByState = {
+  Karnataka: ["Bengaluru", "Mysuru", "Mangaluru", "Bidar"],
+  Maharashtra: ["Mumbai", "Pune", "Nagpur"],
+  "Uttar Pradesh": ["Ayodhya", "Lucknow", "Varanasi"],
+  Telangana: ["Hyderabad", "Warangal"],
+  Delhi: ["New Delhi"]
+};
+
+const stateSelect = document.getElementById("stateSelect");
+const citySelect = document.getElementById("citySelect");
+
+stateSelect.addEventListener("change", () => {
+  const state = stateSelect.value;
+  citySelect.innerHTML = `<option value="">Select City</option>`;
+  citySelect.disabled = !state;
+
+  if (citiesByState[state]) {
+    citiesByState[state].forEach(city => {
+      const option = document.createElement("option");
+      option.textContent = city;
+      option.value = city;
+      citySelect.appendChild(option);
+    });
+  }
+});
+
+
+conststateSelect = document.getElementById("stateSelect");
+constcitySelect = document.getElementById("citySelect");
+const areaInput = document.querySelector(
+  'input[placeholder="Enter area or ward name"]'
+);
+const locationField = document.getElementById("locationField");
+
+function updateLocation() {
+  const state = stateSelect.value;
+  const city = citySelect.value;
+  const area = areaInput.value;
+
+  if (state && city && area) {
+    locationField.value = `${city}, ${area}, ${state}`;
+  } else {
+    locationField.value = "";
+  }
+}
+
+stateSelect.addEventListener("change", updateLocation);
+citySelect.addEventListener("change", updateLocation);
+areaInput.addEventListener("input", updateLocation);
+
+
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.querySelector(".nav-links");
+
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
+
+
+</script>
+

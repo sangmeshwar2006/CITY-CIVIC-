@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Civic Problems</title>
+  <link rel="stylesheet" href="viewproblem.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <h1 class="logo">CityCivic 🇮🇳</h1>
+  <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="report-issue.html">Report Issue</a></li>
+      <li><a href="view-problems.html">View Problems</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul> 
+  </nav>
+   
+
+  <div class="hamburger" id="hamburger">
+    ☰
+  </div>
+</header>
+
+ <section class="filters">
+
+  <select id="stateFilter">
+    <option value="">Select State</option>
+    <option value="Karnataka">Karnataka</option>
+    <option value="Maharashtra">Maharashtra</option>
+    <option value="Uttar Pradesh">Uttar Pradesh</option>
+    <option value="Telangana">Telangana</option>
+    <option value="Tamil Nadu">Tamil Nadu</option>
+    <option value="Andhra Pradesh">Andhra Pradesh</option>
+    <option value="Kerala">Kerala</option>
+  </select>
+
+  <select id="cityFilter" disabled>
+    <option value="">Select City</option>
+    
+  </select>
+
+  <select id="typeFilter">
+    <option>Issue Type</option>
+    <option>Road</option>
+    <option>Garbage</option>
+    <option>Water</option>
+    <option>Electricity</option>
+    <option>Waterlogging</option>
+    <option>Traffic Problems</option>
+    <option>Sanitation</option>
+    <option>Environmental</option>
+  </select>
+
+  <select id="statusFilter">
+    <option>Status</option>
+    <option>Pending</option>
+    <option>In Progress</option>
+    <option>Resolved</option>
+  </select>
+
+</section>
+
+
+  <section class="problems">
+    
+    <div class="problem-card">
+      <h3>Pothole near MG Road</h3>
+      <p><strong>City:</strong> Bengaluru</p>
+      <p><strong>Category:</strong> Road & Potholes</p>
+      <p><strong>Date:</strong> 10 Jan 2025</p>
+      <span class="status pending">Pending</span>
+    </div>
+
+    <div class="problem-card">
+      <h3>Garbage overflow in Sector 5</h3>
+      <p><strong>City:</strong> Pune</p>
+      <p><strong>Category:</strong> Waste Management</p>
+      <p><strong>Date:</strong> 8 Jan 2025</p>
+      <span class="status progress">In Progress</span>
+    </div>
+
+    <div class="problem-card">
+      <h3>Street light not working</h3>
+      <p><strong>City:</strong> Mumbai</p>
+      <p><strong>Category:</strong> Electricity</p>
+      <p><strong>Date:</strong> 5 Jan 2025</p>
+      <span class="status resolved">Resolved</span>
+    </div>
+    
+    <div  class="problem-card">
+      <h3> Waterlogging</h3>
+      <p><strong>City:</strong>Dehli</p>
+      <p><strong>Category:</strong> Water Supply</p>
+      <p><strong>Date:</strong> 5 Jan 2025</p>
+      <span class="status resolved">Resolved</span>
+    </div>
+
+    <div  class="problem-card">
+      <h3>Tree Protection </h3>
+      <p><strong>City:</strong> Ayodhya</p>
+      <p><strong>Category:</strong>Environment</p>
+      <p><strong>Date:</strong> 5 Jan 2025</p>
+      <span class="status resolved">Resolved</span>
+    </div>
+
+    <div  class="problem-card">
+     <h3> Hanging Wires </h3>
+     <p><strong>City:</strong>Bidar</p>
+     <p><strong>Category:</strong> Electricity</p>
+     <p><strong>Date:</strong> 5 Jan 2025</p>
+     <span class="status resolved">Resolved</span> 
+    </div>
+
+  </section>
+
+ 
+  <footer>
+    <p>© 2025 City Civic Portal | Digital India 🇮🇳</p>
+    
+  </footer>
+
+</body>
+</html>
+<script>
+  card.innerHTML = `
+  <h3>${issue.category}</h3>
+
+  <p class="problem-location">
+    📍 <strong>Location:</strong> ${issue.city}, ${issue.area}${issue.state ? `, ${issue.state}` : ""}
+  </p>
+
+  <p><strong>Date:</strong> ${issue.date}</p>
+
+  <span class="status pending">${issue.status}</span>
+`;
+
+const problemsSection = document.querySelector(".problems");
+if (problemsSection){ 
+const issues = JSON.parse(localStorage.getItem("issues")) || [];
+
+problemsSection.innerHTML = "";
+if (issues.length === 0) 
+{ problemsSection.innerHTML = "<p>No issues reported yet.</p>";
+
+ }
+ issues.forEach(issue => { 
+  const card = document.createElement("div");
+  card.innerHTML =
+  <h3>${issue.category}</h3> 
+  <p><strong>City:</strong> ${issue.city}</p> 
+  <p><strong>Area:</strong> ${issue.area}</p> 
+  <p><strong>Date:</strong> ${issue.date}</p> 
+  <span class="status pending">${issue.status}</span>;
+  problemsSection.appendChild(card); 
+}); 
+}
+
+  
+  card.className = "problem-card";
+const citiesByState = {
+  Karnataka: [
+    "Bengaluru", "Mysuru", "Mangaluru", "Hubballi",
+    "Dharwad", "Belagavi", "Shivamogga", "Bidar"
+  ],
+  Maharashtra: [
+    "Mumbai", "Pune", "Nagpur", "Nashik",
+    "Aurangabad", "Solapur", "Kolhapur"
+  ],
+  "Uttar Pradesh": [
+    "Lucknow", "Kanpur", "Varanasi",
+    "Prayagraj", "Ayodhya", "Noida"
+  ],
+  Telangana: [
+    "Hyderabad", "Warangal", "Karimnagar", "Khammam"
+  ],
+  "Tamil Nadu": [
+    "Chennai", "Coimbatore", "Madurai", "Salem"
+  ],
+  "Andhra Pradesh": [
+    "Visakhapatnam", "Vijayawada", "Guntur", "Tirupati"
+  ],
+  Kerala: [
+    "Thiruvananthapuram", "Kochi", "Kozhikode"
+  ]
+};
+
+const stateSelect = document.getElementById("stateFilter");
+const citySelect = document.getElementById("cityFilter");
+
+stateSelect.addEventListener("change", function () {
+  const selectedState = this.value;
+
+  citySelect.innerHTML = `<option value="">Select City</option>`;
+  citySelect.disabled = !selectedState;
+
+  if (selectedState && citiesByState[selectedState]) {
+    citiesByState[selectedState].forEach(city => {
+      const option = document.createElement("option");
+      option.value = city;
+      option.textContent = city;
+      citySelect.appendChild(option);
+    });
+  }
+});
+
+cardCity.textContent = selectedCity;
+
+
+
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.querySelector(".nav-links");
+
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
+
+</script>

@@ -1,0 +1,279 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background-color: #e9eded;
+  color: #333;
+  line-height: 1.6;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0b3c5d;
+  padding: 15px 40px;
+}
+
+.logo {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #f9c74f;
+}
+
+
+.page-header {
+  background-color: #e8f1f8;
+  text-align: center;
+  padding: 45px 20px;
+}
+
+.page-header h2 {
+  font-size: 32px;
+  color: #0b3c5d;
+  margin-bottom: 10px;
+}
+
+.page-header p {
+  font-size: 17px;
+  color: #555;
+}
+
+
+.filters {
+  background-color: #ffffff;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #ddd;
+}
+
+.filters select {
+  padding: 10px 15px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: 1px solid #e8dede;
+  outline: none;
+  
+}
+
+.filters select:focus {
+  border-color: #0b3c5d;
+}
+
+.problems {
+  padding: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+
+.problem-card {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 6px 15px rgba(225, 223, 223, 0.964);
+  transition: transform 0.3s ease;
+}
+
+.problem-card:hover {
+  transform: translateY(-6px);
+  box-shadow: #fcf7fa;
+}
+
+.problem-card h3 {
+  font-size: 20px;
+  color: #0b3c5d;
+  margin-bottom: 12px;
+}
+
+.problem-card p {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+
+.status {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.pending {
+  background-color: #e63946;
+}
+
+.progress {
+  background-color: #f4a261;
+}
+
+.resolved {
+  background-color: #2a9d8f;
+}
+
+
+footer {
+  background-color: #0b3c5d;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .page-header h2 {
+    font-size: 26px;
+  }
+
+  .problems {
+    padding: 20px;
+  }
+}
+
+.filters {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 30px 0;
+}
+
+.filters select {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  min-width: 180px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.filters select:focus {
+  outline: none;
+  border-color: #0b3c5d;
+  box-shadow: 0 0 0 3px rgba(11, 60, 93, 0.15);
+}
+#stateFilter {
+  border: 2px solid #0b3c5d;
+  font-weight: 600;
+}
+
+
+ /* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 30px;
+  background: #0b3c5d;
+  color: white;
+  position: relative;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #ffd700;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between; /* pushes items left & right */
+  align-items: center;
+  padding: 18px 20px;
+  background: #0b3c5d;
+  color: white;
+}
+
+/* Logo */
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Hamburger */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  display: none;
+}
+@media (max-width: 768px) {
+
+  .hamburger {
+    display: block; /* show hamburger on mobile */
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: #0b3c5d;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}

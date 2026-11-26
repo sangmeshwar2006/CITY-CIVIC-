@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>City Civic Portal</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+ 
+  <!--<nav class="navbar">
+    
+    <h1 class="logo">CityCivic 🇮🇳</h1>
+   
+  </nav> -->
+
+    <header class="navbar">
+  <div class="logo">CityCivic 🇮🇳</div>
+
+
+  <nav class="nav-links">
+    <a href="home.html">Home</a>
+    <a href="report-issue.html">Report Issue</a>
+    <a href="viewproblem.html">View Issues</a>
+    <a href="about.html">About</a>
+  </nav>
+
+
+  <div class="hamburger" id="hamburger">
+    ☰
+  </div>
+</header>
+
+  <section class="hero">
+    <h2>Your City, Your Responsibility</h2>
+    <p>Report civic problems and help build cleaner, smarter Indian cities.</p>
+     <div class="hero-buttons">
+      <a href="viewproblem.html" class="btn-link">
+      <button class="secondary">View Issues</button></a>
+       <a href="report-issue.html" class="btn-link">
+      <button>Report an Issue</button></a>
+      
+     </div> 
+    
+ 
+  </section>
+
+ 
+  <section class="categories">
+    <h2>Civic Problem Categories</h2>
+    <div class="cards">
+      <div class="card">🛣 Road & Potholes</div>
+      <div class="card">🗑 Garbage Issues</div>
+      <div class="card">🚰 Water Supply</div>
+      <div class="card">💡 Street Lights</div>
+      <div class="card">🚦 Traffic Problems</div>
+      <div class="card">🚽 Sanitation</div>
+      <div class="card">🌊 Waterlogging</div>
+      <div class="card">🚸 Pedestrian Safety</div>
+      <div class="card">🔌 Hanging Wires</div>
+      <div class="card">🌳 Tree Protection</div>
+    </div>
+  
+  </section>
+
+  
+  <footer>
+    <p>© 2025 City Civic Portal | Digital India 🇮🇳</p>
+    <a href="https://swachhbharatmission.ddws.gov.in/" style="color: azure;">swachhbharatmission</a>
+  </footer>
+
+</body>
+</html>
+ <script>
+ 
+const links = document.querySelectorAll(".nav-links a");
+
+links.forEach(link => {
+  if (link.href === window.location.href) {
+    link.style.color = "#f9c74f";
+  }
+});
+
+
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.querySelector(".nav-links");
+
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
+
+
+ </script>
